@@ -34,15 +34,19 @@ import java.io.File;
 import java.nio.charset.StandardCharsets;
 
 /**
- * This class contains the IoT-Server specific implementation for all the MQTT functionality.
- * This includes connecting to a MQTT Broker & subscribing to the appropriate MQTT-topic, action
- * plan upon losing connection or successfully delivering a message to the broker and processing
- * incoming messages. Makes use of the 'Paho-MQTT' library provided by Eclipse Org.
+ * This is an abstract class that implements the "TransportHandler" interface. The interface is an abstraction for
+ * the core functionality with regards to device-server communication regardless of the Transport protocol. This
+ * specific class contains the HTTP-Transport specific implementations. The class implements utility methods for the
+ * case of a HTTP communication. However, this "abstract class", even-though it implements the "TransportHandler"
+ * interface, does not contain the logic relevant to the interface methods. The specific functionality of the
+ * interface methods are intended to be implemented by the concrete class that extends this abstract class and
+ * utilizes the HTTP specific functionality (ideally a device API writer who would like to communicate to the device
+ * via HTTP Protocol).
  * <p/>
- * It is an abstract class that implements the common interface "TransportHandler" and the
- * "MqttCallback". Whilst providing some methods which handle key MQTT relevant tasks, this class
- * implements only the most generic methods of the "TransportHandler" interface. The rest of
- * the methods are left for any extended concrete-class to implement as per its need.
+ * This class contains the Device-Management specific implementation for all the MQTT functionality. This includes
+ * connecting to a MQTT Broker & subscribing to the appropriate MQTT-topic, action plan upon losing connection or
+ * successfully delivering a message to the broker and processing incoming messages. Makes use of the 'Paho-MQTT'
+ * library provided by Eclipse Org.
  */
 public abstract class MQTTTransportHandler
         implements MqttCallback, TransportHandler<MqttMessage> {

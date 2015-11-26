@@ -18,19 +18,28 @@
 
 package org.wso2.carbon.device.mgt.iot.agent.firealarm.transport;
 
+/**
+ * This interface consists of the core functionality related to the transport between any device and the server. The
+ * interface is an abstraction, regardless of the underlying protocol used for the transport. Implementation of this
+ * interface by any class that caters a specific protocol (ex: HTTP, XMPP, MQTT, CoAP) would ideally have methods
+ * specific to the protocol used for communication and thees methods that implement the logic related to the devices
+ * using the protocol.
+ *
+ * @param <T> a message type specific to the protocol implemented
+ */
 public interface TransportHandler<T> {
-	int DEFAULT_TIMEOUT_INTERVAL = 5000;      // millis ~ 10 sec
+    int DEFAULT_TIMEOUT_INTERVAL = 5000;      // millis ~ 10 sec
 
-	void connect();
+    void connect();
 
-	boolean isConnected();
+    boolean isConnected();
 
-	//TODO:: Any errors needs to be thrown ahead
-	void processIncomingMessage(T message, String... messageParams);
+    //TODO:: Any errors needs to be thrown ahead
+    void processIncomingMessage(T message, String... messageParams);
 
-	void processIncomingMessage();
+    void processIncomingMessage();
 
-	void publishDeviceData(int publishInterval);
+    void publishDeviceData(int publishInterval);
 
-	void disconnect();
+    void disconnect();
 }

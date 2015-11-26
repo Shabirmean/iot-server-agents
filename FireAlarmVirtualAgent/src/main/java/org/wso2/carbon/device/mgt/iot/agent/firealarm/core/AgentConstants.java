@@ -58,8 +58,8 @@ public class AgentConstants {
  		---------------------------------------------------------------------------------------	*/
 	public static final int DEFAULT_MQTT_RECONNECTION_INTERVAL = 2;        // time in seconds
 	public static final int DEFAULT_MQTT_QUALITY_OF_SERVICE = 0;
-	public static final String MQTT_SUBSCRIBE_TOPIC = "wso22/iot/%s/" + DEVICE_TYPE + "/%s";
-	public static final String MQTT_PUBLISH_TOPIC = "wso22/iot/%s/" + DEVICE_TYPE + "/%s/publisher";
+	public static final String MQTT_SUBSCRIBE_TOPIC = "wso2/iot/%s/" + DEVICE_TYPE + "/%s";
+	public static final String MQTT_PUBLISH_TOPIC = "wso2/iot/%s/" + DEVICE_TYPE + "/%s/publisher";
 	/*	---------------------------------------------------------------------------------------
 								XMPP Connection specific information
  		---------------------------------------------------------------------------------------	*/
